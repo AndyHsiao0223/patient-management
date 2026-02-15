@@ -17,10 +17,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ValidationErrorResponseDTO> handleValidationException(MethodArgumentNotValidException ex) {
         FieldError fieldError = ex.getBindingResult().getFieldError();
 
-        ValidationErrorResponseDTO errorResponse = new ValidationErrorResponseDTO(
-                "VALIDATION_ERROR",
-                fieldError != null ? fieldError.getDefaultMessage() : "Validation failed"
-        );
+        ValidationErrorResponseDTO errorResponse = new ValidationErrorResponseDTO("VALIDATION_ERROR", fieldError != null ? fieldError.getDefaultMessage() : "Validation failed");
 
         return ResponseEntity.badRequest().body(errorResponse);
     }
@@ -29,10 +26,16 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ValidationErrorResponseDTO> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
         log.warn("Email already exists: {}", ex.getMessage());
 
-        ValidationErrorResponseDTO errorResponse = new ValidationErrorResponseDTO(
-                "EMAIL_ALREADY_EXISTS",
-                ex.getMessage()
-        );
+        ValidationErrorResponseDTO errorResponse = new ValidationErrorResponseDTO("EMAIL_ALREADY_EXISTS", ex.getMessage());
+
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
+
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<ValidationErrorResponseDTO> handlePatientNotFoundException(PatientNotFoundException ex) {
+        log.warn("Patient not found: {}", ex.getMessage());
+
+        ValidationErrorResponseDTO errorResponse = new ValidationErrorResponseDTO("PATIENT_NOT_FOUND", ex.getMessage());
 
         return ResponseEntity.badRequest().body(errorResponse);
     }
