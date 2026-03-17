@@ -1,0 +1,11 @@
+### PUT
+PUT https://localhost:4000/patients/f47ac10b-58cc-4372-a567-0e02b2c3d479
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@test.com",
+  "address": "Xingying district, Taiwan",
+  "dateOfBirth": "1990-01-01"
+}
+###

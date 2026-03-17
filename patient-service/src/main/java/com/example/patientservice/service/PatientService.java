@@ -40,14 +40,22 @@ public class PatientService {
     public PatientResponseDTO updatePatient(UUID id, PatientRequestDTO patientRequestDTO) {
         Patient patient = patientRepository.findById(id).orElseThrow(() -> new PatientNotFoundException("Patient not found with id: " + id));
 
-        if (patientRepository.existsByEmail(patientRequestDTO.getEmail())) {
+        if (patientRepository.existsByEmailAndIdNot(patientRequestDTO.getEmail(), id)) {
             throw new EmailAlreadyExistsException("A patient with this email already exists: " + patientRequestDTO.getEmail());
         }
 
-        patient.setName(patientRequestDTO.getName());
-        patient.setEmail(patientRequestDTO.getEmail());
-        patient.setAddress(patientRequestDTO.getAddress());
-        patient.setDateOfBirth(LocalDate.parse(patientRequestDTO.getDateOfBirth()));
+        if (patientRequestDTO.getName() != null) {
+            patient.setName(patientRequestDTO.getName());
+        }
+        if (patientRequestDTO.getEmail() != null) {
+            patient.setEmail(patientRequestDTO.getEmail());
+        }
+        if (patientRequestDTO.getAddress() != null) {
+            patient.setAddress(patientRequestDTO.getAddress());
+        }
+        if (patientRequestDTO.getDateOfBirth() != null) {
+            patient.setDateOfBirth(LocalDate.parse(patientRequestDTO.getDateOfBirth()));
+        }
 
         Patient updatedPatient = patientRepository.save(patient);
 

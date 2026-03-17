@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS patient (
 
 -- Sample patient data (50 records)
 INSERT INTO patient (id, name, email, address, date_of_birth, registration_date) VALUES
-(RANDOM_UUID(), 'John Smith', 'john.smith@email.com', '123 Main St, New York, NY 10001', '1985-03-15', '2024-01-15'),
+('f47ac10b-58cc-4372-a567-0e02b2c3d479', 'Sample Sample', 'sample.sample@email.com', '123 Main St, New York, NY 10001', '1985-03-15', '2024-01-15'),
 (RANDOM_UUID(), 'Mary Johnson', 'mary.johnson@email.com', '456 Oak Ave, Los Angeles, CA 90001', '1990-07-22', '2024-01-18'),
 (RANDOM_UUID(), 'Robert Williams', 'robert.williams@email.com', '789 Pine Rd, Chicago, IL 60601', '1978-11-30', '2024-02-03'),
 (RANDOM_UUID(), 'Patricia Brown', 'patricia.brown@email.com', '321 Elm St, Houston, TX 77001', '1982-05-08', '2024-02-10'),
