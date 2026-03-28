@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package billingservice;
+
+option java_multiple_files = true;
+option java_package = "com.patientmanagement.billingservice.grpc";
+
+service BillingService {
+  rpc CreateBillingAccount (CreateBillingAccountRequest) returns (CreateBillingAccountResponse);
+}
+
+message CreateBillingAccountRequest {
+  string patient_id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message CreateBillingAccountResponse {
+  string account_id = 1;
+  string status = 2;
+}
