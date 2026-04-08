@@ -1,4 +1,0 @@
-### GET - all patients
-GET https://localhost:4000/patients
-
-###
