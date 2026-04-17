@@ -114,6 +114,8 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: "true"
       SPRING_SQL_INIT_MODE: always
+      # This is a random key. In production, use a secure method to manage secrets
+      JWT_SECRET: 9rhyMMvqLndRKrN45uxziCne89G96zcmWS179vGiwTJ
     depends_on:
       - auth-service-db
     networks:

@@ -1,14 +1,14 @@
 -- ============================================================
 -- Mock data for 'users' table
 -- BCrypt encoded passwords (using default strength 10):
---   'test1234'    => $2a$10$EdownnAIRqDGmFgnRGhmzuXA3JMTQO0kPJBpGFWbMM.LJxJUFGMa
+--   'test1234'    => $2a$12$hbiQULqxDDgKwoLDVI8FL.79cfvi4iC9Mk8rwjPRsFh3YklkpZ8rO
 --   'password123' => $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
 -- ============================================================
 
 -- ★ Fixed test user for Postman testing (DO NOT change this row)
 INSERT INTO users (id, email, password, role)
 VALUES ('e1b2c3d4-5678-9abc-def0-1234567890ab', 'testuser@example.com',
-        '$2a$10$EdownnAIRqDGmFgnRGhmzuXA3JMTQO0kPJBpGFWbMM.LJxJUFGMa', 'ADMIN')
+        '$2a$12$hbiQULqxDDgKwoLDVI8FL.79cfvi4iC9Mk8rwjPRsFh3YklkpZ8rO', 'ADMIN')
 ON CONFLICT (id) DO NOTHING;
 
 -- Random mock users
